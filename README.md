@@ -72,10 +72,10 @@ yomu repaints when the screen comes back.
 ## Reading
 
 A tap of at most 150 ms turns the page forward. A longer press on the page
-does nothing. Swipe down from the top eighth of the screen to open the menu
-over the page. Swipe left from the right 6% to go back one page. Any
-other touch on the page does nothing. On the Kindle, a touch that starts in
-the left 6% of the screen is ignored on every screen.
+does nothing. Swipe down from the top eighth of the screen. The left half
+opens the menu over the page. The right half goes back one page. Any other
+touch on the page does nothing. On the Kindle, a touch that starts in the
+left 6% of the screen is ignored on every screen.
 
 The menu lists 再開, 目次, 本棚, and 文字. The top line is the current
 page and the page count, as in 3 / 120 ページ. Tap that line to type a
@@ -118,8 +118,10 @@ SVG is left out. A picture smaller than 64 pixels on both sides is shown
 as its alt text instead. A book keeps at most 512 pictures. A spine of up
 to 2048 files opens.
 
-The page and the library open their menu with a downward swipe from the top
-eighth. Every other screen takes taps only. A swipe there does nothing.
+The page opens its menu with a downward swipe from the left half of the top
+eighth. The same swipe from the right half goes back one page. The library
+opens its menu with a downward swipe from the top eighth. Every other screen
+takes taps only. A swipe there does nothing.
 戻る, 上, and 下 appear when that screen needs them. 上 and 下
 move a page. The chapter list and the transfer screen each have a button that leaves
 the screen. Keys still move the highlight.

@@ -527,18 +527,16 @@ int handle_reader(State *st, const AppEvent *ev) {
       }
       return turn_page(st, 1);
     case EV_SWIPE_DOWN:
-      if (ev->y0 < edge) {
+      if (ev->y0 >= edge) {
+        return 0;
+      }
+      if (ev->x0 < st->host->w / 2) {
         st->screen = SCR_MENU;
         st->menu_cursor = 0;
         return 1;
       }
-      return 0;
+      return turn_page(st, -1);
     case EV_SWIPE_LEFT:
-      /* Same 6% strip as the left grip. */
-      if (ev->x0 >= st->host->w - grip_band(st->host->w)) {
-        return turn_page(st, -1);
-      }
-      return 0;
     case EV_SWIPE_UP:
     case EV_SWIPE_RIGHT:
       return 0;

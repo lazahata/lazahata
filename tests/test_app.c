@@ -313,27 +313,29 @@ static int reader_poll(AppHost *host, AppEvent *event) {
       expect(have && page == 1, "tap saves the next page");
       memcpy(g_page1, host->gray, g_page_n);
       event->kind = EV_SWIPE_LEFT;
-      event->x0 = host->w - grip_band(host->w) - 1;
+      event->x0 = host->w - 1;
       event->y0 = host->h / 2;
       return 1;
     case 2:
-      expect(page_match(g_page1, host), "a swipe beside the right edge stays put");
+      expect(page_match(g_page1, host), "a side swipe stays put");
       event->kind = EV_SWIPE_DOWN;
+      event->x0 = host->w - 1;
       event->y0 = host->h / 2;
       return 1;
     case 3:
-      expect(page_match(g_page1, host), "middle swipe stays put");
+      expect(page_match(g_page1, host), "a middle swipe stays put");
       event->kind = EV_SWIPE_UP;
       event->y0 = host->h - 1;
       return 1;
     case 4:
-      expect(page_match(g_page1, host), "upward swipe stays put");
-      event->kind = EV_SWIPE_LEFT;
-      event->x0 = host->w - 1;
+      expect(page_match(g_page1, host), "an upward swipe stays put");
+      event->kind = EV_SWIPE_DOWN;
+      event->x0 = host->w / 2;
+      event->y0 = 0;
       return 1;
     case 5:
-      expect(page_match(g_page0, host), "right-edge swipe shows the previous page");
-      expect(have && page == 0, "right-edge swipe saves the previous page");
+      expect(page_match(g_page0, host), "a right-half swipe shows the previous page");
+      expect(have && page == 0, "a right-half swipe saves the previous page");
       event->kind = EV_TAP;
       return 1;
     case 6:
@@ -343,18 +345,20 @@ static int reader_poll(AppHost *host, AppEvent *event) {
       return 1;
     case 7:
       expect(page_match(g_page1, host) && have && page == 1, "a 200 ms press stays on the page");
-      event->kind = EV_SWIPE_LEFT;
+      event->kind = EV_SWIPE_DOWN;
       event->x0 = host->w - 1;
+      event->y0 = 0;
       event->ms = 5000;
       return 1;
     case 8:
-      expect(page_match(g_page0, host), "a slow right-edge swipe shows the previous page");
-      expect(have && page == 0, "a slow right-edge swipe saves the previous page");
+      expect(page_match(g_page0, host), "a slow right-half swipe shows the previous page");
+      expect(have && page == 0, "a slow right-half swipe saves the previous page");
       event->kind = EV_TAP;
       return 1;
     case 9:
       expect(page_match(g_page1, host) && have && page == 1, "a tap after the slow swipe goes forward");
       event->kind = EV_SWIPE_DOWN;
+      event->x0 = host->w / 2 - 1;
       event->y0 = 0;
       return 1;
     case 10:
