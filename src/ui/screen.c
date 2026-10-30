@@ -71,8 +71,8 @@ int list_delta(AppEvKind kind, int window) {
   }
 }
 
-int edge_band(int height) {
-  int edge = height / 8;
+int edge_band(int side) {
+  int edge = side / 8;
   if (edge < 1) {
     edge = 1;
   }

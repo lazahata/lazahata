@@ -113,8 +113,7 @@ final class YomuView extends View {
       if (ms < 0) {
         ms = 0;
       }
-      /* A bottom-edge swipe is the navigation bar's. Finish it anyway when
-       * the finger has already moved; a cancelled tap must not turn the page. */
+      /* A cancelled tap must not turn the page. A swipe still counts. */
       finishGesture(x0, y0, x, y, ms, action == MotionEvent.ACTION_CANCEL);
       return true;
     }
@@ -217,21 +216,6 @@ final class YomuView extends View {
     } else {
       kind = dy < 0 ? EV_SWIPE_UP : EV_SWIPE_DOWN;
     }
-    /* The reader only accepts a swipe that starts in the bottom eighth.
-     * That strip is the navigation bar, so a start in the bottom quarter
-     * is reported as the bottom edge. */
-    if (kind == EV_SWIPE_UP) {
-      sy = liftBottom(sy);
-    }
     activity.enqueue(kind, ex, ey, sx, sy, ms);
-  }
-
-  private int liftBottom(int sy) {
-    int height = bitmap != null ? bitmap.getHeight() : getHeight();
-    int band = height / 4;
-    if (height <= 1 || sy < height - band) {
-      return sy;
-    }
-    return height - 1;
   }
 }

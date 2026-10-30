@@ -533,12 +533,13 @@ int handle_reader(State *st, const AppEvent *ev) {
         return 1;
       }
       return 0;
-    case EV_SWIPE_UP:
-      if (ev->y0 >= st->host->h - edge) {
+    case EV_SWIPE_LEFT:
+      /* Same 6% strip as the left grip. */
+      if (ev->x0 >= st->host->w - grip_band(st->host->w)) {
         return turn_page(st, -1);
       }
       return 0;
-    case EV_SWIPE_LEFT:
+    case EV_SWIPE_UP:
     case EV_SWIPE_RIGHT:
       return 0;
     case EV_CONFIRM:
