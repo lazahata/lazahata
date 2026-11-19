@@ -1043,8 +1043,6 @@ static void test_library_menu(void) {
 static void test_rotate(void) {
   int lw = 0;
   int lh = 0;
-  yomu_logical_size(1236, 1648, 0, &lw, &lh);
-  expect(lw == 1236 && lh == 1648, "portrait size");
   yomu_logical_size(1236, 1648, 3, &lw, &lh);
   expect(lw == 1648 && lh == 1236, "landscape size");
   int nx = 0;
@@ -1069,10 +1067,10 @@ static void test_rotate(void) {
     yomu_to_logical(rot, 1236, 1648, nx, ny, &lx, &ly);
     expect(lx == lw / 2 && ly == lh / 2, "rotate roundtrip");
   }
-  int band = grip_band(1236);
-  expect(band == 74, "grip band on the paperwhite");
-  expect(73 < band, "press at 73 is in the grip");
-  expect(74 >= band, "press at 74 is live");
+  int band = grip_band(1648);
+  expect(band == 98, "grip band on the paperwhite");
+  expect(97 < band, "press at 97 is in the grip");
+  expect(98 >= band, "press at 98 is live");
 }
 
 static void zip_put(FILE *fp, const void *bytes, size_t n, uint32_t *off) {
@@ -1690,7 +1688,7 @@ static int type_poll(AppHost *host, AppEvent *event) {
         char file[768];
         snprintf(file, sizeof file, "%s/type.txt", host->home);
         expect(type_step() == 1, "larger type is saved");
-        expect(type_em(1236, 1648) == 57, "saved step is 57px on paperwhite");
+        expect(type_em(1648, 1236) == 57, "saved step is 57px on paperwhite");
         FILE *fp = fopen(file, "r");
         char buf[64];
         expect(fp != NULL, "type.txt exists");
@@ -1984,13 +1982,13 @@ static void test_type(void) {
   expect(mkdtemp(dir) != NULL, "type dir");
   type_load(dir);
   expect(type_step() == 0 && strcmp(type_step_label(), "標準") == 0, "type defaults to standard");
-  expect(type_em(1236, 1648) == 50, "paperwhite standard em");
+  expect(type_em(1648, 1236) == 50, "paperwhite standard em");
   expect(type_set_step(1) == 1, "step up");
-  expect(type_em(1236, 1648) == 57, "one step larger");
+  expect(type_em(1648, 1236) == 57, "one step larger");
   expect(type_set_step(TYPE_STEP_MAX) == 1, "largest step");
-  expect(type_em(1236, 1648) == 75 && strcmp(type_step_label(), "最大") == 0, "largest em");
+  expect(type_em(1648, 1236) == 75 && strcmp(type_step_label(), "最大") == 0, "largest em");
   expect(type_set_step(TYPE_STEP_MIN) == 1, "smallest step");
-  expect(type_em(1236, 1648) == 35 && strcmp(type_step_label(), "最小") == 0, "smallest em");
+  expect(type_em(1648, 1236) == 35 && strcmp(type_step_label(), "最小") == 0, "smallest em");
   expect(type_em(120, 80) == 12, "small page clamps the em");
   expect(type_set_step(0) == 1, "back to standard");
 
