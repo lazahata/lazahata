@@ -71,7 +71,7 @@ struct LayoutOptions {
   void* measureCtx = nullptr;
 };
 
-/* Paperwhite 11 landscape at the smallest type step is 31 columns by 35 em
+/* Paperwhite 11 portrait at the smallest type step is 23 columns by 47 em
  * (about 1100 glyphs). Half-em punctuation and 縦中横 add more. 256 was the
  * Xteink page, so that panel committed after the right-hand columns and
  * left the rest of the width blank. The firmware build passes

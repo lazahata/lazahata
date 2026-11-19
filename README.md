@@ -42,8 +42,8 @@ Eject, then open KUAL or KUALA and choose yomu.
 
 Put `.epub`, `.txt`, `.mobi`, and `.azw3` files in `/mnt/us/yomu/books` on the USB volume. A `.azw` file uses the same container. The file has to be DRM-free and reflowable: an encrypted store download, a fixed-layout book, and a KFX file stay unopened. yomu creates
 that folder if it is missing. Subfolders are included. yomu starts in
-landscape. On a Paperwhite 11 that is 1648×1236, turned 90° clockwise.
-That orientation is fixed. `YOMU_ROTATE` is ignored. Each page is typeset to that panel. Hidden folders are skipped, and
+portrait. On a Paperwhite 11 that is 1236×1648, the panel's native
+orientation. That orientation is fixed. `YOMU_ROTATE` is ignored. Each page is typeset to that panel. Hidden folders are skipped, and
 so are `system`, `extensions`, and `lost+found` at the top of `books`. 終了
 on the library menu exits yomu, and the launcher restores the Kindle UI. The
 power button sleeps the Kindle when the framework is still running, so
@@ -57,7 +57,7 @@ Host tests run on a desktop. This build has also been used on a Paperwhite 11.
 
 `make android` writes `dist/android/yomu.apk`, an armeabi-v7a app for Android 5.1.
 Install it with `adb install -r` on a rooted DPT-RP1. The install notes are
-`platform/android/INSTALL.txt`. The activity stays in landscape, leaves the
+`platform/android/INSTALL.txt`. The activity stays in portrait, leaves the
 Android framework running, and copies each update into a bitmap. It then asks
 the panel to refresh that rectangle: `View.invalidate(Rect, int)` when the
 firmware has that method, otherwise the six-argument `postInvalidateDelayed`

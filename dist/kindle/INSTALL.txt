@@ -11,8 +11,8 @@ Copy onto the Kindle USB drive:
 Eject, open KUAL or KUALA, and choose yomu. The yomu item pauses the
 Kindle UI. yomu no framework stops it and starts it again on
 exit. Put .epub, .txt, .mobi, and .azw3 files in yomu/books on the USB drive. .azw is the same container. Encrypted, fixed-layout, and KFX files stay unopened. yomu
-creates that folder if it is missing. yomu starts in landscape, turned 90
-degrees (1648x1236 on a Paperwhite 11), and typesets each page to that panel.
+creates that folder if it is missing. yomu starts in portrait
+(1236x1648 on a Paperwhite 11), and typesets each page to that panel.
 That orientation is fixed.
 
 Swipe down from the top of the library and choose 転送. A browser on the same Wi-Fi can upload

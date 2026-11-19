@@ -68,7 +68,8 @@ FILE *open_mapped(const char *path, int writable, int trunc) {
 
 }  // namespace
 
-BoardConfig BoardConfig::ACTIVE = {1236, 1648};
+/* Paperwhite 11 portrait, 1236×1648. displayWidth is the page height. */
+BoardConfig BoardConfig::ACTIVE = {1648, 1236};
 
 extern "C" void ts_board_set(int page_w, int page_h) {
   BoardConfig::ACTIVE.displayHeight = page_w;

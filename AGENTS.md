@@ -10,10 +10,10 @@ Strings drawn by the C UI stay Japanese. `README.md` and both `INSTALL.txt` file
 
 ## Device
 
-The device is a Paperwhite 11. `env_rotate()` in `src/kindle/kindle_fb.c` always returns 3. Ignore `YOMU_ROTATE`.
+The device is a Paperwhite 11. `env_rotate()` in `src/kindle/kindle_fb.c` always returns 0. Ignore `YOMU_ROTATE`.
 Sleep works only while the Kindle framework is running. Launch from the KUAL entry `yomu`. Leave the frontlight off.
 
-The DPT-RP1 port is `make android`. It writes `dist/android/yomu.apk` (armeabi-v7a, Android 5.1). The activity is landscape. Books are `yomu/books` on external storage. Each present copies the gray buffer and requests a panel waveform for that rectangle. Leave the Android framework running.
+The DPT-RP1 port is `make android`. It writes `dist/android/yomu.apk` (armeabi-v7a, Android 5.1). The activity is portrait. Books are `yomu/books` on external storage. Each present copies the gray buffer and requests a panel waveform for that rectangle. Leave the Android framework running.
 
 ## Source
 

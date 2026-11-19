@@ -151,13 +151,13 @@ static int env_force(const char *name, int *out) {
   return 1;
 }
 
-/* The page is 90° clockwise. YOMU_ROTATE is not a switch. */
+/* The page is the panel's native portrait. YOMU_ROTATE is not a switch. */
 static int env_rotate(void) {
   const char *v = getenv("YOMU_ROTATE");
-  if (v && v[0] && !(v[0] == '3' && v[1] == '\0')) {
+  if (v && v[0] && !(v[0] == '0' && v[1] == '\0')) {
     yomu_log("ignored YOMU_ROTATE=%s", v);
   }
-  return 3;
+  return 0;
 }
 
 static void fill_rect(struct mxcfb_rect *rect, int x, int y, int w, int h) {

@@ -4,7 +4,7 @@ The device runs Android 5.1.1. Root it so adb install works (HappyZ/dpt-tools). 
 
   adb install -r yomu.apk
 
-Open yomu from the launcher. The Android framework stays running. The app draws into a bitmap and asks the panel to refresh that rectangle on every update. The screen stays in landscape, and the frontlight is not touched. There is no frontlight on this device.
+Open yomu from the launcher. The Android framework stays running. The app draws into a bitmap and asks the panel to refresh that rectangle on every update. The screen stays in portrait, and the frontlight is not touched. There is no frontlight on this device.
 
 Books go in yomu/books on internal storage. That is the yomu/books directory on the external-storage root, usually /sdcard/yomu/books. yomu creates the directory. The 文字 screen scans /system/fonts and lists every face that has kana and kanji. A .ttf, .ttc, .otf, or .otc uploaded on the transfer page, or copied into yomu/fonts, is listed too. The transfer page shows that folder. The log is yomu/yomu.log next to that folder.
 
